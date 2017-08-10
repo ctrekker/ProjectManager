@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+.new-project-form {
+    height: 60%;
+    width: 20%;
+    margin: auto;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+}
+.new-project-form textarea {
+    height: 100px;
+    resize: none;
+}
+.new-project-form>fieldset {
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.new-project-form>fieldset>h2 {
+    margin-top: 5px;
+}

@@ -1,0 +1,229 @@
+body {
+    overflow-x: hidden;
+}
+.menu-nav {
+    border-bottom: 1px solid lightgray !important;
+}
+.menu-nav a {
+    color: black;
+}
+.user-options {
+    margin-left: 20px !important;
+}
+.new-project-form textarea {
+    height: 100px;
+    resize: none;
+}
+.center-text {
+    text-align: center;
+}
+label.file-chooser {
+   cursor: pointer;
+   font-weight: normal;
+}
+.label-file-chooser {
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+}
+.open-modal-body {
+    padding: 10px !important;
+}
+.open-modal-options, .open-modal-content {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid lightgray;
+} 
+.open-modal-options {
+    border-bottom:0;
+    margin-bottom:0;
+}
+.open-modal-content {
+    margin-top:0;
+}
+.radio-button:focus {
+    outline: none !important;
+}
+.open-project-summary-container {
+    width: 24% !important;
+}
+.open-project-summary {
+    position: relative;
+    margin: 10px;
+    background-color: #cccccc;
+    border: 1px solid #7b7b7b;
+    border-radius: 15px;
+    user-select: none;
+    cursor: pointer;
+    transition: border 0.2s;
+}
+.open-project-summary:hover {
+    border: 1px solid #000ebf;
+}
+.open-project-summary>img {
+    width: 100%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+.open-project-summary>div {
+    font-size: 19px;
+    font-weight: 500;
+    text-rendering: geometricPrecision;
+    word-wrap: break-word;
+    line-height: 120%;
+    position: absolute;
+    padding: 8px;
+    bottom: 0;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.68);
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #7b7b7b;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.open-project-summary>div>span {
+    margin: 3px 0;
+}
+.open-project-selected {
+    border: 2px solid #000ebf !important;
+}
+
+.project-header {
+    border-bottom: 1px solid lightgray;
+}
+.project-header-wrapper {
+    padding: 15px;
+    width: 42%;
+}
+.project-header-wrapper h1 {
+    margin: 0;
+}
+.project-body {
+    display: table;
+    position: relative;
+    width: 100%;
+}
+.project-actions {
+    display: table-row;
+}
+.project-actions>div {
+    display: table-cell;
+}
+.project-tasks {
+    width: 30%;
+    border-right: 1px solid lightgray;
+}
+.project-details {
+    width: 70%;
+}
+.project-tasks-wrapper, .project-details-wrapper {
+    margin: 10px;
+    position: absolute;
+    height: inherit;
+    width: 100%;
+}
+.project-tasks-actions {
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+.project-tasks-header h4 {
+    display: inline-block;
+}
+.project-details-wrapper {
+    overflow: auto;
+}
+.project-tasks, .project-details {
+    height: inherit;
+    position: absolute;
+    overflow: hidden;
+}
+.project-details {
+    position: relative;
+}
+.project-tasks-list {
+    overflow: auto;
+    width: calc(100% - 20px);
+    height: calc(100% - 60px);
+    border: 1px solid lightgray;
+}
+#projectTasks {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#projectTasks:first-child {
+    padding-top: 5px !important;
+}
+.project-tasks-list ul {
+    list-style: none;
+    padding-left: 20px;
+}
+.project-tasks-list li {
+    margin-top: 2px
+}
+.project-tasks-list li>div>input[type=checkbox] {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.project-tasks-list li>div>input[type=text], .project-tasks-list li>div>span {
+    margin-left: 4px;
+}
+.project-tasks-list li>div>input[type=text] {
+    background-color: #e4e4e4;
+    border: none;
+    outline: none;
+}
+.project-tasks-list li>div {
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+}
+.project-tasks-list li>div:hover, .project-tasks-list-hover {
+    background-color: #e4e4e4;
+}
+.project-tasks-item-selected {
+    background-color: #5bc0de !important; /* Overrides hover selector */
+    color: white;
+}
+.project-tasks-create-button, .project-tasks-option-button {
+    float: right;
+}
+.open-null {
+    display: none !important;
+}
+.project-details-wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+}
+.project-details-header {
+    width: 40%;
+}
+.project-details-table {
+    border: 1px solid #a0a0a0;
+}
+.project-details-table tr:nth-child(odd) {
+    background-color: #f3f3f3;
+}
+.project-details-table td {
+    padding: 10px;
+}
+
+.modal-fixed {
+    width: 1000px !important;
+    margin: 0 auto;
+}
+.disabled {
+    cursor: initial !important;
+}
+.navbar {
+    margin-bottom: 0 !important;
+}
+.none {
+    display: none !important;
+}

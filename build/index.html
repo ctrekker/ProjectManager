@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ProjectManager</title>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+        <link rel="stylesheet" type="text/css" href="./lib/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="./lib/css/loading.css"/>
+        
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css"/>
+        
+        <script src="./lib/js/main.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="./lib/css/pure.min.css"/>
+    </head>
+    <body>
+        <div class="body">
+            <nav class="navbar menu-nav">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">File</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-toggle="modal" data-target="#newProjectModal"><span class="glyphicon glyphicon-file"></span> New</a></li>
+                            <li><a href="#" id="openProjectA" data-toggle="modal" data-target="#openProjectModal"><span class="glyphicon glyphicon-folder-open"></span> Open</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">Edit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-scissors"></span> Cut</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-copy"></span> Copy</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-paste"></span> Paste</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Undo</a></li>
+                            <li><a href="#">Redo</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">View</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-modal-window"></span> New Window</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div id="optionsNotSigned" class="btn-group user-options" style="display: none">
+                            <button id="signinMenuButton" class="btn btn-info navbar-btn" data-toggle="modal" data-target="#signinModal">Sign In</button>
+                            <button id="signupMenuButton" class="btn btn-info navbar-btn" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+                        </div>
+                        <div id="optionsSigned" class="btn-group user-options" style="display: none">
+                            <button id="profileButton" class="btn btn-info navbar-btn" data-toggle="modal" data-target="#profileModal"><span class="glyphicon glyphicon-user"></span> My Account</button>
+                            <button id="signoutButton" class="btn btn-info navbar-btn">Sign Out</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                <div class="project-wrapper open-null" id="projectEditor">
+                    <div class="project-editor">
+                        <div class="project-header">
+                            <div class="project-header-wrapper">
+                                <h1 id="projectTitle"></h1>
+                                <!--<div class="project-progress pure-u-1-2 progress"><div class="progress-bar progress-bar-info" role="progressbar" style="width: 67%;"></div></div>-->
+                                <p id="projectDescription"></p>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-actions" id="projectActions">
+                                <div class="project-tasks">
+                                    <div class="project-tasks-wrapper">
+                                        <div class="project-tasks-header">
+                                            <h4>Tasks</h4>
+                                            <div class="btn-group project-tasks-actions">
+                                                <button id="newTaskButton" class="btn btn-info btn-xs">New</button>
+                                            </div>
+                                        </div>
+                                        <div class="project-tasks-list">
+                                            <ul id="projectTasks">
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-details open-null" id="projectDetails">
+                                    <div class="project-details-wrapper">
+                                        <div class="project-details-header">
+                                            <h4 id="detailsTitle"></h4>
+                                            <p id="detailsDescription"></p> 
+                                        </div>
+                                        <div class="project-details-body">
+                                            <div class="project-details-table-wrapper">
+                                                <table class="project-details-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Priority</td>
+                                                            <td id="taskPriority"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Subtasks</td>
+                                                            <td id="taskChildren"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Complete By</td>
+                                                            <td id="taskDue"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Created</td>
+                                                            <td id="taskCreate"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Completed</td>
+                                                            <td id="taskStatus"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="newProjectModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">New Project</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="newProjectForm" class="new-project-form pure-form pure-form-aligned">
+                            <div class="new-project-group pure-control-group">
+                                <!--<label for="title">Title</label>-->
+                                <input type="text" placeholder="Title" class="pure-input-1" name="title" id="newProjectTitle"/>
+                            </div>
+                            <div class="new-project-group pure-control-group">
+                                <!--<label for="desc">Description</label>-->
+                                <textarea placeholder="Description" class="pure-input-1" name="desc" id="newProjectDesc"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer pure-g">
+                        <button id="newProjectButton" class="pure-button pure-button-primary pure-u-5-8" data-dismiss="modal">Create</button>
+                        <button type="button" class="pure-button pure-u-3-8" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="openProjectModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-fixed">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Open Project</h4>
+                    </div>
+                    <div class="modal-body open-modal-body pure-g">
+                        <div class="open-modal-options pure-u-1">
+                            <span>Sort By:</span>
+                            <div class="btn-group" id="openSortByButtons">
+                                <button class="radio-button btn btn-default">Name</button>
+                                <button class="radio-button btn btn-default">Progress</button>
+                                <button class="radio-button btn btn-default active">Recent</button>
+                            </div>
+                        </div>
+                        <div class="open-modal-content pure-u-1">
+                            <div class="pure-g" id="openProjectList">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="openProjectButton" class="btn btn-primary disabled">Open Project</button>
+                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="signinModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <form id="signinForm" class="modal-content" action="" method="POST" onsubmit="return false">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Sign In</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="pure-form signin-form">
+                            <fieldset class="pure-group">
+                                <input type="text" name="user" class="pure-u-1" id="signinUser" placeholder="Username"/>
+                                <input type="password" name="pass" class="pure-u-1" id="signinPass" placeholder="Password"/>
+                            </fieldset>
+                            <span>Not a member?</span>
+                            <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#signupModal">Sign up</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer pure-g">
+                        <button type="submit" id="signinButton" class="pure-button pure-button-primary pure-u-5-8">Sign In</button>
+                        <button type="button" class="pure-button pure-u-3-8" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="signupModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <form id="signupForm" class="modal-content" action="" method="POST" onsubmit="return false">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Sign Up</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="pure-form signin-form">
+                            <fieldset class="pure-group">
+                                <input type="text" name="first" class="pure-u-1" id="signupFirst" placeholder="First Name"/>
+                                <input type="text" name="last" class="pure-u-1" id="signupLast" placeholder="Last Name"/>
+                                <input type="email" name="email" class="pure-u-1" id="signupEmail" placeholder="Email"/>
+                                <input type="text" name="user" class="pure-u-1" id="signupUser" placeholder="Username"/>
+                                <input type="password" name="pass" class="pure-u-1" id="signupPass" placeholder="Password"/>
+                            </fieldset>
+                            <span>Already a member?</span>
+                            <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#signinModal">Sign in</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer pure-g">
+                        <button type="submit" id="signupButton" class="pure-button pure-button-primary pure-u-5-8">Sign Up</button>
+                        <button type="button" class="pure-button pure-u-3-8" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="profileModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id="profileHeader" class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Profile</h3>
+                    </div>
+                    <div id="profileBody" class="modal-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="newAvatarModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Change Profile Picture</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="newAvatarForm" enctype="multipart/form-data" onsubmit="return false">
+                            <p>
+                                <label for="newAvatarFile" class="file-chooser btn btn-default" id="newAvatarLabel">Browse...</label>
+                                <input type="file" name="avatar" class="label-file-chooser" id="newAvatarFile"/>
+                                <input type="hidden" name="submit" value=""/>
+                            </p>
+                            <p>
+                                <button class="btn btn-primary" type="submit" id="newAvatarSubmit">Set Profile Picture</button>
+                            </p>
+                            <progress id="newAvatarProgress" style="display: none"></progress>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Add slideDown animation to Bootstrap dropdown when expanding.
+            $('.dropdown').on('show.bs.dropdown', function() {
+                $(this).find('.dropdown-menu').first().stop(true, true).slideDown(100);
+            });
+
+            // Add slideUp animation to Bootstrap dropdown when collapsing.
+            $('.dropdown').on('hide.bs.dropdown', function() {
+                $(this).find('.dropdown-menu').first().stop(true, true).slideUp(100);
+            });
+        </script>
+    </body>
+</html>

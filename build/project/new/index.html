@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create New Project</title>
+        <link rel="stylesheet" type="text/css" href="../../lib/css/pure.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../lib/css/new.css"/>
+        <script src="../../lib/js/uuid-random.min.js"></script>
+        <script src="../../lib/js/new.js"></script>
+    </head>
+    <body>
+        <form class="new-project-form pure-form pure-form-aligned" action="../../data/newp.php" method="POST">
+            <fieldset>
+                <h2>New Project</h2>
+                <input type="hidden" name="uuid" id="uuid"/>
+                <div class="new-project-group pure-control-group">
+                    <!--<label for="title">Title</label>-->
+                    <input type="text" placeholder="Title" class="pure-input-1" name="title" id="title"/>
+                </div>
+                <div class="new-project-group pure-control-group">
+                    <!--<label for="desc">Description</label>-->
+                    <textarea placeholder="Description" class="pure-input-1" name="desc" id="desc"></textarea>
+                </div>
+                <div class="new-project-group pure-control-group">
+                    <button type="submit" class="pure-button pure-button-primary pure-input-1">Create</button>
+                </div>
+            </fieldset>
+        </form> 
+    </body>
+</html>

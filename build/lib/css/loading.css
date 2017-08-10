@@ -1,0 +1,7 @@
+.loading-bar {
+    border: 1px solid black;
+    display: inline-block;
+}
+.loading-bar-fill {
+    background-color: limegreen;
+}
